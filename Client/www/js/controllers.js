@@ -1,6 +1,17 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope,testService) {
+  console.log(testService.bar);
+  // function init () {
+      
+  // }
+  // init();
+  testService.foo.get({
+
+  },function (data) {
+    console.log(data);
+  });
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -8,8 +19,8 @@ angular.module('starter.controllers', [])
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  $scope.$on('$ionicView.enter', function(e) {
+  });
 
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
