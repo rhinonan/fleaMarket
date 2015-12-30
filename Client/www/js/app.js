@@ -83,8 +83,44 @@ angular.module('starter', [
         controller: 'AccountCtrl'
       }
     }
-  });
+  })
+  // 用户个人中心
+  .state('tab.user', {
+    url:'/userCenter',
+    views: {
+      'tab-userCenter':{
+        templateUrl: 'templates/userCenter/userCenter.html',
 
+      }
+    }
+  })
+  // 商品列表
+  .state('tab.commodity', {
+    url: '/commodityList',
+    views: {
+      'commodityList': {
+        templateUrl: 'templates/commodity/commodityList.html'
+      }
+    }
+  })
+  // 二手物品
+  .state('tab.flea', {
+    url: '/flea',
+    views: {
+      'flea':{
+        templateUrl: 'templates/flea/fleaList.html'
+      }
+    }
+  })
+  // 店铺中心
+  .state('tab.store', {
+    url: '/storeList',
+    views: {
+      'storeList':{
+        templateUrl: 'templates/store/storeList.html'
+      }
+    }
+  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 

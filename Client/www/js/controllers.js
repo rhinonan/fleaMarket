@@ -1,16 +1,15 @@
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope,testService) {
-  console.log(testService.bar);
+  // console.log(testService.bar);
   // function init () {
       
   // }
   // init();
-  testService.foo.get({
-
-  },function (data) {
-    console.log(data);
-  });
+  // testService.foo.get({})
+  // .then(function (data) {
+  //   console.log(data);
+  // });
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
