@@ -11,6 +11,8 @@ angular.module('starter', [
   'starter.controllers', 
   'starter.services',
   'starter.config',
+  'fleaCtrl',
+  'starter.fleaService',
   'starter.testService'])
 
 .run(function($ionicPlatform) {
@@ -108,7 +110,8 @@ angular.module('starter', [
     url: '/flea',
     views: {
       'flea':{
-        templateUrl: 'templates/flea/fleaList.html'
+        templateUrl: 'templates/flea/fleaList.html',
+        controller: 'fleaListCtrl',
       }
     }
   })
