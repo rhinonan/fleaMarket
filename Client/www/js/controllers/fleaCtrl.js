@@ -1,11 +1,24 @@
 angular.module('fleaCtrl', [])
 .controller('fleaListCtrl', function(
-$scope,
-fleaService,
-testService){
+  $scope,
+  fleaService,
+  testService){
   fleaService.getList.get({},function (data) {
     $scope.fleaList = data;
   });
+})
+.controller('fleaDetailCtrl', function($scope,$stateParams, $ionicSlideBoxDelegate,$timeout,fleaService){
+  console.log($stateParams.fleaId);
+  fleaService.getDetail.get({
+    'fleaId': $stateParams.fleaId,
+  },function (data) {
+    $scope.fleaDetail = data;
+    console.log(data);
+  });
+  $timeout(function () {
+    $ionicSlideBoxDelegate.next();
+  },1000);
+
 });
 
 // .controller('DashCtrl', function($scope,testService) {

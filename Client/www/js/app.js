@@ -115,6 +115,15 @@ angular.module('starter', [
       }
     }
   })
+  .state('tab.flea-detail', {
+    url:'/flea/:fleaId',
+    views:{
+      'flea': {
+        templateUrl: 'templates/flea/fleaDetail.html',
+        controller: 'fleaDetailCtrl',
+      }
+    }
+  })
   // 店铺中心
   .state('tab.store', {
     url: '/storeList',

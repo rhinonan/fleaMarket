@@ -1,0 +1,9 @@
+<ion-view view-title="物品详情">
+<ion-content has-subheader="false">
+  <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="2" does-continue="true">
+    <ion-slide ng-repeat="img in fleaDetail.imgUrls track by $index">
+      <div class="box blue" ><img ng-src="{{img}}" alt="二手物品图片"></div>
+    </ion-slide>
+  </ion-slide-box>
+</ion-content>
+</ion-view>
