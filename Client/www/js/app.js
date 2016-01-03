@@ -12,8 +12,9 @@ angular.module('starter', [
   'starter.services',
   'starter.config',
   'fleaCtrl',
+  'loginCtrl',
   'starter.fleaService',
-  'starter.testService'])
+  'starter.userService'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -48,44 +49,6 @@ angular.module('starter', [
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  })
   // 用户个人中心
   .state('tab.user', {
     url:'/userCenter',
@@ -132,8 +95,13 @@ angular.module('starter', [
         templateUrl: 'templates/store/storeList.html'
       }
     }
+  })
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login/login.html',
+    controller: 'loginCtrl',
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/commodityList');
 
 });

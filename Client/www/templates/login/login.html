@@ -1,0 +1,28 @@
+<ion-view view-title="用户登录">
+  <ion-content has-subheader="false" padding="true">
+    <div class="list">
+      <label class="item item-input" >
+        <input type="text" placeholder="用户名" ng-model="user.username">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="密码" ng-model="user.password">
+      </label>
+    </div>
+    <div class="row assertive" ng-if="loginErr">
+      <h4 class="assertive">用户名或者密码错误</h4>
+    </div>
+    <div class="row">
+      <!-- 登录按钮 -->
+      <div class="col">
+        <button class="button button-balanced button-block" ng-click="login()">
+          登录
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-positive button-block" ng-click="jump('register')">
+          注册
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
