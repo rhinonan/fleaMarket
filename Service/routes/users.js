@@ -18,7 +18,6 @@ var errInfo = {
 
 /* GET users listing. */
 router.get('/login', function(req, res, next) {
-  console.log(req.query.username == 'husan');
   if(req.query.username === 'husan' && req.query.password === '123456'){
 
     res.jsonp(userInfo);
@@ -26,4 +25,9 @@ router.get('/login', function(req, res, next) {
   res.status(404).jsonp(errInfo);
 });
 
+router.get('/register', function (req, res, next) {
+  console.log(req.query);
+  res.status(200).jsonp(userInfo);
+  // res.send('hello')
+});
 module.exports = router;

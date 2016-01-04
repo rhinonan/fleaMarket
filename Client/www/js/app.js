@@ -14,6 +14,7 @@ angular.module('starter', [
   'fleaCtrl',
   'loginCtrl',
   'starter.fleaService',
+  'starter.commonService',
   'starter.userService'])
 
 .run(function($ionicPlatform) {
@@ -95,6 +96,12 @@ angular.module('starter', [
         templateUrl: 'templates/store/storeList.html'
       }
     }
+  })
+  .state('register',{
+    url: '/register',
+    abstract: false,
+    templateUrl: 'templates/login/register.html',
+    controller: 'registerCtrl'
   })
   .state('login', {
     url: '/login',

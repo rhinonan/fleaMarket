@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+// 用户信息相关接口
 var users = require('./routes/users');
 var foo =require('./routes/foo');
 //二手物品相关接口
 var flea = require('./routes/flea');
-
+// 学校信息相关接口
+var school = require('./routes/school');
 var app = express();
 
 // view engine setup
@@ -29,6 +31,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/foo', foo);
 app.use('/flea',flea);
+app.use('/school', school);
 // as
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

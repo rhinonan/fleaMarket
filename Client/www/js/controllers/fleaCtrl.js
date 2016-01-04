@@ -2,8 +2,7 @@ angular.module('fleaCtrl', [])
 // 二手物品列表控制器
 .controller('fleaListCtrl', function(
   $scope,
-  fleaService,
-  testService){
+  fleaService){
   fleaService.getList.get({},function (data) {
     $scope.fleaList = data;
   });
