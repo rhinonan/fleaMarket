@@ -1,6 +1,6 @@
 angular.module('loginCtrl',[])
 //登录控制器
-.controller('loginCtrl', function($scope, $state, userService){
+.controller('loginCtrl', function($scope, $state, userService, $ionicPopup){
   $scope.user = {};
   /**
    * 用户登录
@@ -14,12 +14,31 @@ angular.module('loginCtrl',[])
       username: $scope.user.username,
       password: $scope.user.password,
     },function (data) {
-      if(data.userName){
-        $state.go('tab.user', {});
+      if(data._id){
+        $ionicPopup.show({
+          template: '<span style="text-align:center;display:block" class="balanced">登陆成功</span>',
+          title:'登陆成功' ,
+          scope: $scope,
+          buttons: [{
+            text: '确定',
+            type: 'button-balanced',
+            onTap: function () {
+              $state.go('tab.user', {});
+              return true;
+            }
+          }]
+        });
       }
     },function (err) {
-      $scope.loginErr = true;
-      $scope.errMsg = err.msg;
+      $ionicPopup.show({
+        template: '<span style="text-align:center;display:block" class="assertive">用户名或者密码错误</span>',
+        title: '登陆失败',
+        scope: $scope,
+        buttons: [{
+          text: '确定',
+          type: 'button-balanced',
+        }]
+      });
     });
   };
 
@@ -74,7 +93,7 @@ angular.module('loginCtrl',[])
       return false;
     }else{
       userService.register.register($scope.user, function (data) {
-        if(data.userId){
+        if(data._id){
           $ionicPopup.show({
             template: '<span style="text-align:center;display:block" class="balanced">注册成功</span>',
             title: '注册成功',
@@ -86,6 +105,19 @@ angular.module('loginCtrl',[])
                 return true;
                 // e.preventDefault();
               }
+            }]
+          });
+        }
+      }, function (err) {
+        if(err){
+          $ionicPopup.show({
+            template: '<span style="text-align:center;display:block" class="assertive">用户名已经被注册</span>',
+            title: '用户注册错误',
+            // subTitle: '子标题哇',
+            scope: $scope,
+            buttons: [{
+              text: '确定',
+              type: 'button-positive'
             }]
           });
         }
