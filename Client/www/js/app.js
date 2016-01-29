@@ -13,6 +13,7 @@ angular.module('starter', [
   'starter.config',
   'fleaCtrl',
   'loginCtrl',
+  'userCenterCtrl',
   'starter.fleaService',
   'starter.commonService',
   'starter.userService'])
@@ -56,7 +57,16 @@ angular.module('starter', [
     views: {
       'tab-userCenter':{
         templateUrl: 'templates/userCenter/userCenter.html',
-
+        controller: 'userCenterCtrl',
+      }
+    }
+  })
+  // 发布二手物品
+  .state('tab.postFlae', {
+    url:'/userCenter/postFlea',
+    views: {
+      'tab-userCenter': {
+        temlateUrl: 'templates/commodity/commodityList.html'
       }
     }
   })

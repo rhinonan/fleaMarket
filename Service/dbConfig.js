@@ -13,10 +13,21 @@ var UserSchema = new mongoose.Schema({
   password: String,
   tel: String,
   email: String,
-  schoolId: Number,
+  schoolId: String,
   data: { type: Date, default: Date.now }
 
 });
 
+var FleaSchema = new mongoose.Schema({
+  name: String,
+  price: Number,
+  // school:
+});
+
+var SchoolSchema = new mongoose.Schema({
+  schoolname: String,
+});
 // mongoose.model('Book',BookSchema);
 mongoose.model('User',UserSchema);
+mongoose.model('School', SchoolSchema);
+mongoose.model('Flea', FleaSchema);

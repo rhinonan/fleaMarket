@@ -1,6 +1,20 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+require('../dbConfig.js');
 
+var FleaModel = mongoose.model('School');
+
+// var newFlea = new FleaModel({
+//   schoolname: 'hahahaha',
+// });
+// newFlea.save(function (err) {
+//   if(err){
+//     console.log(err);
+//   }else{
+//     console.log('success!');
+//   }
+// })
 //虚拟二手物品列表数据
 var bar = [{
   fleaId:'0',
@@ -38,7 +52,7 @@ router.get('/list', function(req, res, next) {
 
 router.get('/:fleaId', function (req, res, next) {
   var fleaId = req.path.split('/')[1];
-  console.log(fleaId);
+  // console.log(fleaId);
   if(fleaId == 0){
 
     res.jsonp(bar[0]);
