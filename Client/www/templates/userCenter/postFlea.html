@@ -1,5 +1,51 @@
 <ion-view view-title="发布二手物品">
-  <ion-content has-subheader="false">
-    ASDSAD
+  <ion-content has-subheader="false" padding="false">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">物品名称</span>
+        <input type="text" placeholder="物品名称" ng-model="flea.name">
+      </label>
+      <label class="item item-input ">
+        <span class="input-label">价格</span>
+        <input type="text" placeholder="价格" ng-model="flea.price">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">描述</span>
+        <input type="text" placeholder="描述" ng-model="flea.description">
+      </label>
+      <label class="item item-select">
+        <div class="input-label">
+          成新率
+        </div>
+        <select ng-model="flea.newnessRate">
+          <option selected>请选择</option>
+          <option value="10">全新</option>
+          <option value="9">9成新</option>
+          <option value="8">7-8成新 </option>
+          <option value="6">5-6成新</option>
+          <option value="5">5成以下</option>
+        </select>
+      </label>
+      <label class="item item-select">
+        <div class="input-label">
+          所在高校
+        </div>
+        <select ng-model="flea.school">
+          <option selected>请选择</option>
+          <option value="{{o._id}}" ng-repeat="o in schoolList">{{o.schoolname}}</option>
+        </select>
+      </label>
+    </div>
+    <div class="list">
+      <label class="item item-input" ng-repeat="img in flea.imgs track by $index">
+        <span class="input-label">图片地址</span>
+        <input type="text" placeholder="物品名称" ng-model="img">
+      </label>
+    </div>      
+    <div class="col col-50" style="margin-top:-20px;">
+        <button class="button button-positive" ng-click="addPic()" >
+          添加图片
+        </button>
+    </div>
   </ion-content>
 </ion-view>

@@ -1,5 +1,9 @@
 angular.module('starter.userService', [])
 
+/**
+ * 用户登录注册
+ * @return {[type]}                                                             [description]
+ */
 .factory('userService', function($resource,configuration) {
   return {
     'login': $resource(configuration.apiUrl+'users/login', {}, {
@@ -21,6 +25,11 @@ angular.module('starter.userService', [])
 
   };
 })
+
+/**
+ * 用户注册验证
+ * @return {}  
+ */ 
 .factory('valideService',function(){
   var result = {
     pass: false,
@@ -66,4 +75,20 @@ angular.module('starter.userService', [])
       return result;
     }
   };
+})
+
+.factory('bankSession', function ($window) {
+  return {
+    'setUserId': function (userId) {
+      $window.sessionStorage.setItem('userId', userId);
+    },
+    'getUserId': function () {
+      return $window.sessionStorage.getItem('userId');
+    },
+    clear: function () {
+      return $window.sessionStorage.clear();
+    }
+  };
 });
+
+

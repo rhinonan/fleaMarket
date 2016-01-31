@@ -1,6 +1,6 @@
 angular.module('loginCtrl',[])
 //登录控制器
-.controller('loginCtrl', function($scope, $state, userService, $ionicPopup){
+.controller('loginCtrl', function($scope, $state, userService, $ionicPopup, bankSession){
   $scope.user = {};
   /**
    * 用户登录
@@ -15,6 +15,7 @@ angular.module('loginCtrl',[])
       password: $scope.user.password,
     },function (data) {
       if(data._id){
+        bankSession.setUserId(data._id);
         $ionicPopup.show({
           template: '<span style="text-align:center;display:block" class="balanced">登陆成功</span>',
           title:'登陆成功' ,

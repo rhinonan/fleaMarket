@@ -21,7 +21,10 @@ var UserSchema = new mongoose.Schema({
 var FleaSchema = new mongoose.Schema({
   name: String,
   price: Number,
-  // school:
+  schoolId: Number,
+  discription: String,
+  newnessRate: Number,
+  userId:Number,
 });
 
 var SchoolSchema = new mongoose.Schema({

@@ -55,7 +55,7 @@ angular.module('starter', [
   .state('tab.user', {
     url:'/userCenter',
     views: {
-      'tab-userCenter':{
+      'userCenter':{
         templateUrl: 'templates/userCenter/userCenter.html',
         controller: 'userCenterCtrl',
       }
@@ -65,8 +65,9 @@ angular.module('starter', [
   .state('tab.postFlae', {
     url:'/userCenter/postFlea',
     views: {
-      'tab-userCenter': {
-        temlateUrl: 'templates/commodity/commodityList.html'
+      'userCenter': {
+        templateUrl: 'templates/userCenter/postFlea.html',
+        controller: 'postFleaCtrl'
       }
     }
   })
@@ -75,7 +76,8 @@ angular.module('starter', [
     url: '/commodityList',
     views: {
       'commodityList': {
-        templateUrl: 'templates/commodity/commodityList.html'
+        templateUrl: 'templates/commodity/commodityList.html',
+
       }
     }
   })
