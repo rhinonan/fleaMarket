@@ -30,7 +30,7 @@
         <div class="input-label">
           所在高校
         </div>
-        <select ng-model="flea.school">
+        <select ng-model="flea.schoolId">
           <option selected>请选择</option>
           <option value="{{o._id}}" ng-repeat="o in schoolList">{{o.schoolname}}</option>
         </select>
@@ -46,6 +46,11 @@
         <button class="button button-positive" ng-click="addPic()" >
           添加图片
         </button>
+    </div>
+    <div class="col">
+      <button class="button button-block" ng-click="postFlea()">
+        提交
+      </button>
     </div>
   </ion-content>
 </ion-view>

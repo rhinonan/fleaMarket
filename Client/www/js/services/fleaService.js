@@ -13,12 +13,20 @@ angular.module('starter.fleaService', [])
         isArray: true,
       } 
     }),
-    'getDetail': $resource(configuration.apiUrl+'flea/:fleaId', {
+    'getDetail': $resource(configuration.apiUrl+'flea/detail/:fleaId', {
       'fleaId': '@fleaId'
     }, {
       get: {
         method: 'JSONP',
         params: {
+          callback: 'JSON_CALLBACK',
+        }
+      }
+    }),
+    'postFlea': $resource(configuration.apiUrl+'flea/postFlea', {}, {
+      post: {
+        method: 'JSONP',
+        params:{
           callback: 'JSON_CALLBACK',
         }
       }
