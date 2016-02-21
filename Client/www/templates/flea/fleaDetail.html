@@ -10,8 +10,11 @@
     <div class="col"><span class="red-w middle-w">{{fleaDetail.price | currency:'￥' }}</span></div>
   </div>
   <div class="row">
-    <div class="col">
-      {{fleaDetail.description}}1
+    <div class="col" ng-if="fleaDetail.description">
+      {{fleaDetail.description}}
+    </div>
+    <div class="col" ng-if="!fleaDetail.description">
+      暂未填写任何备注信息
     </div>
   </div>
   <div class="row">
@@ -32,7 +35,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <a class="button button-balanced button-full button-small" style="display:inline-block;width:100%;">
+      <a class="button button-balanced button-full button-small" style="display:inline-block;width:100%;" href="tel:{{userInfo.tel}}">
         <span class="ion-ios-telephone"></span>&emsp;拨打电话
       </a>
     </div>

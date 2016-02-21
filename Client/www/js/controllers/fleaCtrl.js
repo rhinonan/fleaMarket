@@ -3,9 +3,13 @@ angular.module('fleaCtrl', [])
 .controller('fleaListCtrl', function(
   $scope,
   fleaService){
-  fleaService.getList.get({},function (data) {
-    $scope.fleaList = data;
-  });
+  $scope.doRefresh = function () {
+    fleaService.getList.get({},function (data) {
+      $scope.fleaList = data;
+    });
+    $scope.$broadcast('scroll.refreshComplete');
+  };
+  $scope.doRefresh();
 })
 
 
