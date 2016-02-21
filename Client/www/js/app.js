@@ -11,6 +11,7 @@ angular.module('starter', [
   'starter.controllers', 
   'starter.services',
   'starter.config',
+  'starter.filter',
   'fleaCtrl',
   'loginCtrl',
   'userCenterCtrl',

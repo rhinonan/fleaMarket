@@ -22,7 +22,7 @@ var FleaSchema = new mongoose.Schema({
   name: String,
   price: Number,
   schoolId: String,
-  discription: String,
+  description: String,
   newnessRate: Number,
   userId:String,
   imgs: [String],

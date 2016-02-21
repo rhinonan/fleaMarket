@@ -7,18 +7,30 @@ angular.module('fleaCtrl', [])
     $scope.fleaList = data;
   });
 })
+
+
 //二手物品详情控制器
-.controller('fleaDetailCtrl', function($scope,$stateParams, $ionicSlideBoxDelegate,$timeout,fleaService){
+.controller('fleaDetailCtrl', function($scope,$stateParams, $ionicSlideBoxDelegate,$timeout,fleaService, userService, commonService){
   console.log($stateParams.fleaId);
   fleaService.getDetail.get({
     'fleaId': $stateParams.fleaId,
   },function (data) {
     $scope.fleaDetail = data;
-    console.log(data);
+    //获取个人信息
+    userService.findUser.findUser({
+      userId: data.userId
+    }).$promise.then(function (data) {
+      $scope.userInfo = data;
+    });
+    // 获取学校名称
+    commonService.getSchoolById.get({
+      id:data.schoolId
+    }).$promise.then(function (data) {
+      $scope.schoolName = data.schoolname;
+    });
   });
-  $timeout(function () {
-    $ionicSlideBoxDelegate.next();
-  },1000);
+
+
 
 });
 

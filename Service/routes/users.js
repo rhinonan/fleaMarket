@@ -20,8 +20,15 @@ var errInfo = {
   msg : '用户名或者密码错误',
 };
 
-/* GET users listing. */
+router.get('/', function (req, res, next) {
+  res.send('123')
+});
+
+// 用户登录
 router.get('/login', function(req, res, next) {
+  if(req.query.username === undefined){
+    res.sendStatus(404);
+  }
   UserModel.find({
     username: req.query.username,
   },function (err, data) {
@@ -34,8 +41,7 @@ router.get('/login', function(req, res, next) {
         res.status(404).jsonp(errInfo);
         console.log('2');
         return false;
-      }
-      if(data[0].password === req.query.password){
+      }else if(data[0].password === req.query.password){
         res.jsonp(data[0]);
         return true;
       }else{
@@ -46,7 +52,7 @@ router.get('/login', function(req, res, next) {
     }
   });
 });
-
+// 用户注册
 router.get('/register', function (req, res, next) {
   /**
    * 查询用户名是否已经被注册
@@ -92,5 +98,19 @@ router.get('/register', function (req, res, next) {
   }
   // res.status(200).jsonp(userInfo);
   // res.send('hello')
+});
+
+// 根据用户id查找
+router.get('/findUser', function (req, res, next) {
+  UserModel.find({
+    _id : req.query.userId
+  }, function (err, data) {
+    if(err){
+      console.log(err);
+    }else{
+      data[0].password = undefined;
+      res.jsonp(data[0]);
+    }
+  });
 });
 module.exports = router;

@@ -3,8 +3,8 @@
   has-subheader="false"
   padding="false">
     <div class="list flea-list-box">
-        <a class="item item-thumbnail-left" ui-sref="tab.flea-detail({fleaId:item.fleaId})" ng-repeat="item in fleaList">
-          <img ng-src="{{item.imgUrls[0]}}">
+        <a class="item item-thumbnail-left" ui-sref="tab.flea-detail({fleaId:item._id})" ng-repeat="item in fleaList">
+          <img ng-src="{{item.imgs[0]}}">
           <h2>{{item.name}}</h2>
           <p>{{item.price | currency : '￥'}}左右<span></p>
           <p>{{item.createDate}} <span class="ion-ios-location-outline location">{{item.school}}</span></p>

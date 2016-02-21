@@ -10,5 +10,15 @@ angular.module('starter.commonService', [])
         isArray: true
       }
     }),
+    'getSchoolById': $resource(configuration.apiUrl+'school/:id', {
+      'id': '@id'
+      }, {
+      get: {        
+        method: 'JSONP',
+        params:{
+          callback: 'JSON_CALLBACK',
+        },
+      }
+    })
   };
 });

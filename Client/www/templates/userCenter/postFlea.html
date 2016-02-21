@@ -39,7 +39,7 @@
     <div class="list">
       <label class="item item-input" ng-repeat="img in flea.imgs track by $index">
         <span class="input-label">图片地址</span>
-        <input type="text" placeholder="物品名称" ng-model="img">
+        <input type="text" placeholder="图片地址" ng-model="flea.imgs[$index]">
       </label>
     </div>      
     <div class="col col-50" style="margin-top:-20px;">

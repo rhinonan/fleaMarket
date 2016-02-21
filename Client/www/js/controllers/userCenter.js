@@ -38,10 +38,7 @@ angular.module('userCenterCtrl',[])
       if(data){
         console.log(data);
       }
-      
     }, function (err) {
-      
     });
-    console.log($scope.flea);
   };
 });

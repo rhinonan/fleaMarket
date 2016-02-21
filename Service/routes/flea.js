@@ -16,41 +16,30 @@ router.get('/list', function(req, res, next) {
   // 判断是否需要更新缓存
   cache();
   //返回缓存
-  console.log(fleaCache);
   res.jsonp(fleaCache);
 });
 
 // 发布二手物品
 router.get('/postFlea', function (req, res, next) {
-  // if(req.query.imgs.length == 0){
-  //   console.log(1111111);
-  //   req.query.imgs[0] = 'http://ww4.sinaimg.cn/bmiddle/71f0dc27gw1f0lcha448rj20v50v575j.jpg';
-  // }
-  // console.log(req.query);
-  // for(var i = req.query.imgs.length-1;i >= 0; i--){
-  //   console.log(i+'67');
-  //   if(req.query.imgs[i].length === 0 || req.query.imgs[i] === undefined){
-  //     req.query.imgs[i] = 'http://ww4.sinaimg.cn/bmiddle/71f0dc27gw1f0lcha448rj20v50v575j.jpg';
-  //   }
-  // }
   addFlea();
+  console.log(req.query)
   function addFlea () {
     var newFlea = new FleaModel({
       name: req.query.name,
       price: req.query.price,
       schoolId: req.query.schoolId,
-      discription: req.query.discription,
+      description: req.query.description,
       newnessRate: req.query.newnessRate,
       userId: req.query.userId,
       imgs: req.query.imgs.length === 0 ? 'http://ww4.sinaimg.cn/bmiddle/71f0dc27gw1f0lcha448rj20v50v575j.jpg' : req.query.imgs,
     });
-
+    // 存贮新发布的物品
     newFlea.save(function (err) {
       if(err){
         console.log(err);
         res.status(404);
       }else{
-        res.jsonp(foo);
+        res.jsonp('err');
       }
     });
   }
@@ -62,10 +51,16 @@ router.get('/postFlea', function (req, res, next) {
 router.get('/detail/:fleaId', function (req, res, next) {
   var fleaId = req.path.split('/')[2];
   // console.log(fleaId);
-  if(fleaId == 0){
+  FleaModel.find({
+    _id:fleaId
+  }, function (err, data) {
+    if(err){
+      res.status(404);
+    }else{
+      res.jsonp(data[0]);
+    }
+  });
 
-    res.jsonp(bar[0]);
-  }
 });
 
 // 缓存处理行数

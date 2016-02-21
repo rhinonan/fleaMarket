@@ -35,4 +35,12 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/:id', function (req, res, next) {
+  console.log(req.params);
+  SchoolModel.find({
+    _id: req.params.id
+  },function (err, data) {
+    res.jsonp(data[0]);
+  });
+});
 module.exports = router;

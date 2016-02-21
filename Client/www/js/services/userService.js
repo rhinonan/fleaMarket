@@ -21,8 +21,15 @@ angular.module('starter.userService', [])
           callback: 'JSON_CALLBACK',
         },
       }
+    }),
+    'findUser': $resource(configuration.apiUrl+'users/findUser', {}, {
+      findUser: {
+        method: 'JSONP',
+        params : {
+          callback: 'JSON_CALLBACK',
+        }
+      }
     })
-
   };
 })
 
