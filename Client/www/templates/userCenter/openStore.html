@@ -1,0 +1,36 @@
+<ion-view view-title="我要开店">
+  <ion-content has-subheader="false">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">店铺名称</span>
+        <input type="text" placeholder="店铺名称" ng-model="store.name">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">描述</span>
+        <input type="text" placeholder="描述" ng-model="store.description">
+      </label>
+      
+      <label class="item item-select">
+        <div class="input-label">
+          所在高校
+        </div>
+        <select ng-model="store.schoolId">
+          <option selected>请选择</option>
+          <option value="{{o._id}}" ng-repeat="o in schoolList">{{o.schoolname}}</option>
+        </select>
+      </label>
+    </div>
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">店铺封面</span>
+        <input type="text" placeholder="图片地址" ng-model="store.img">
+      </label>
+    </div>      
+    
+    <div class="col">
+      <button class="button button-block" ng-click="post()">
+        提交
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

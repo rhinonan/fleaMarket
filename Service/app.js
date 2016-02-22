@@ -13,6 +13,10 @@ var foo =require('./routes/foo');
 var flea = require('./routes/flea');
 // 学校信息相关接口
 var school = require('./routes/school');
+// 商品相关接口
+var commodity = require('./routes/commodity');
+// 店铺想接口
+var store = require('./routes/store');
 var app = express();
 
 // view engine setup
@@ -32,6 +36,8 @@ app.use('/users', users);
 app.use('/foo', foo);
 app.use('/flea',flea);
 app.use('/school', school);
+app.use('/commodity',commodity);
+app.use('/store',store);
 // as
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

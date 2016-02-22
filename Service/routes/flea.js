@@ -22,7 +22,6 @@ router.get('/list', function(req, res, next) {
 // 发布二手物品
 router.get('/postFlea', function (req, res, next) {
   addFlea();
-  console.log(req.query)
   function addFlea () {
     var newFlea = new FleaModel({
       name: req.query.name,

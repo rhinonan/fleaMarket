@@ -6,6 +6,9 @@ angular.module('userCenterCtrl',[])
   $scope.postFlea = function () {
     $state.go('tab.postFlae',{});
   };
+  $scope.postStore = function () {
+    $state.go('tab.postStoreF', {});
+  };
 })
 
 /**
@@ -41,4 +44,5 @@ angular.module('userCenterCtrl',[])
     }, function (err) {
     });
   };
+
 });

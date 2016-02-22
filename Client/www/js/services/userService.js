@@ -83,7 +83,10 @@ angular.module('starter.userService', [])
     }
   };
 })
-
+/**
+ * 用户登录状态记录
+ * @return {[type]}
+ */
 .factory('bankSession', function ($window) {
   return {
     'setUserId': function (userId) {
@@ -96,6 +99,32 @@ angular.module('starter.userService', [])
       return $window.sessionStorage.clear();
     }
   };
+})
+
+/**
+ * 店铺相关接口
+ * @return {[type]}     [description]
+ */
+.factory('storeService', function($resource,configuration){
+
+  return {
+    'postStore': $resource(configuration.apiUrl+'store/api/postStore', {}, {
+      get: {
+        method: 'JSONP',
+        params: {
+          callback: 'JSON_CALLBACK',
+        }
+      }
+    }),
+    'storeList': $resource(configuration.apiUrl+'store/api/storeList', {}, {
+      get: {
+        method: 'JSONP',
+        params: {
+          callback: 'JSON_CALLBACK',
+        },
+        isArray: true,
+      }
+    }),
+
+  };
 });
-
-

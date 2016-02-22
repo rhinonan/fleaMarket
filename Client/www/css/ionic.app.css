@@ -9734,7 +9734,7 @@ a.button {
   padding-left: 10px; }
 
 .red-w {
-  color: red; }
+  color: red !important; }
 
 .middle-w {
   font-size: 16px; }

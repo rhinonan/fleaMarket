@@ -28,6 +28,13 @@ var FleaSchema = new mongoose.Schema({
   imgs: [String],
 });
 
+var StoreSchema = new mongoose.Schema({
+  name: String,
+  schoolId: String,
+  description: String,
+  userId: String,
+  img: String,
+});
 var SchoolSchema = new mongoose.Schema({
   schoolname: String,
 });
@@ -35,3 +42,4 @@ var SchoolSchema = new mongoose.Schema({
 mongoose.model('User',UserSchema);
 mongoose.model('School', SchoolSchema);
 mongoose.model('Flea', FleaSchema);
+mongoose.model('Store', StoreSchema);

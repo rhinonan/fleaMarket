@@ -15,6 +15,8 @@ angular.module('starter', [
   'fleaCtrl',
   'loginCtrl',
   'userCenterCtrl',
+  'StoreCtrl',
+  'commodityCtrl',
   'starter.fleaService',
   'starter.commonService',
   'starter.userService'])
@@ -72,6 +74,24 @@ angular.module('starter', [
       }
     }
   })
+  .state('tab.postStoreF', {
+    url:'/userCenter/postStoreF',
+    views:{
+      userCenter:{
+        templateUrl: 'templates/userCenter/openStoreF.html',
+        controller: 'postStoreFCtrl',
+      }
+    }
+  })
+  .state('tab.postStore', {
+    url: '/userCenter/postStore',
+    views:{
+      userCenter:{
+        templateUrl: 'templates/userCenter/openStore.html',
+        controller: 'postStoreCtrl',
+      }
+    }
+  })
   // 商品列表
   .state('tab.commodity', {
     url: '/commodityList',
@@ -101,12 +121,12 @@ angular.module('starter', [
       }
     }
   })
-  // 店铺中心
   .state('tab.store', {
     url: '/storeList',
     views: {
       'storeList':{
-        templateUrl: 'templates/store/storeList.html'
+        templateUrl: 'templates/store/storeList.html',
+        controller: 'storeListCtrl'
       }
     }
   })
