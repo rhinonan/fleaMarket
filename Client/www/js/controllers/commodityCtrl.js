@@ -37,20 +37,21 @@ angular.module('commodityCtrl', [])
 .controller('indexCtrl',function ($ionicTabsDelegate, $timeout, $rootScope){
 
   $ionicTabsDelegate.showBar(false);
-  $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams, options){
-    console.log(toState);
-    switch(toState.name){
+  $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams, options){    switch(toState.name){
       case 'tab.coDetail':
         $ionicTabsDelegate.showBar(false);
         break;
       case 'tab.flea-detail':
-        $ionicTabsDelegate.showBar(false);
+        $ionicTabsDelegate.showBar(true);
         break;
       case 'tab.shopCart':
         $rootScope.$broadcast('shopCartChange');
         break;
       default:
         $ionicTabsDelegate.showBar(true);
+    }
+    if(fromState.name =='tab.store-detail'){
+      $ionicTabsDelegate.showBar(true);
     }
   });
 

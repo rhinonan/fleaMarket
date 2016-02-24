@@ -38,14 +38,42 @@ angular.module('StoreCtrl',[])
   };
 })
 
+/**
+ * 店铺列表控制器
+ * @return {[type]}                    [description]
+ */
 .controller('storeListCtrl', function ($scope,$timeout,$ionicTabsDelegate, storeService) {
   storeService.storeList.get({}).$promise
   .then(function (data) {
     $scope.storeList = data;
-    // console.log(data);
   });
-  // $timeout(function () {
-  //   console.log(1213123);
-  //   $ionicTabsDelegate.showBar(false);
-  // }, 1);
+})
+/**
+ * 店铺详情控制器
+ */
+.controller('storeDetailCtrl', function($scope, coService, $stateParams){
+  coService.findCoByStoreId.get({
+    storeId: $stateParams.storeId
+  }).$promise
+  .then(function (data) {
+    $scope.coList = data;
+    console.log(data);
+  });
+})
+.controller('storeCoDetailCtrl',function ($scope, $ionicTabsDelegate, $timeout, coService, $stateParams, shopCart, $ionicSlideBoxDelegate){
+  // 获取商品详情
+  coService.findCoByCoId.get({
+    coId: $stateParams.coId
+  }, function (data) {
+    $scope.co = data;
+
+    $ionicSlideBoxDelegate.$getByHandle('coImg-viewer').update();
+  });
+  $scope.addToShopCart = function () {
+    if($scope.co.stock === 0){
+      return false;
+    }
+    shopCart.addCo($scope.co);
+    $scope.co.stock--;
+  };
 });

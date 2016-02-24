@@ -57,6 +57,7 @@ angular.module('userCenterCtrl',[])
       $scope.sum();
     }
   });
+
   // 商品数量减一
   $scope.minus = function (id) {
     if($scope.coList[id].length > 1){
@@ -66,6 +67,7 @@ angular.module('userCenterCtrl',[])
     }
     $scope.sum();
   };
+
   // 商品数量加一
   $scope.plus = function (id) {
     if($scope.coList[id].length < $scope.coList[id][0].stock){
@@ -76,6 +78,7 @@ angular.module('userCenterCtrl',[])
     }
     $scope.sum();
   };
+
   // 计算总金额
   $scope.sum = function () {
     sum = 0;
@@ -83,5 +86,10 @@ angular.module('userCenterCtrl',[])
       sum = sum + $scope.coList[key][0].price * $scope.coList[key].length;
     }
     $scope.amout = sum;
+  };
+
+  // 结算订单
+  $scope.closing = function () {
+    
   };
 });

@@ -1,7 +1,7 @@
 <ion-view view-title="店铺列表">
   <ion-content has-subheader="false">
     <div class="list">
-      <a class="item item-thumbnail-left" href="#" ng-repeat="store in storeList">
+      <a class="item item-thumbnail-left" ui-sref="tab.store-detail({storeId:store._id})" ng-repeat="store in storeList">
         <img ng-src="{{store.img}}">
         <h2>{{store.name}}</h2>
         <p>{{store.description}}</p>

@@ -162,12 +162,22 @@ angular.module('starter', [
       }
     }
   })
-  // 商品电脑
+  // 店铺详情
   .state('tab.store-detail', {
     url: '/storeList/storeDetail/:storeId',
     views: {
       storeList: {
         templateUrl: 'templates/store/storeDetail.html',
+        controller: 'storeDetailCtrl'
+      }
+    }
+  })
+  .state('tab.store-co-detail', {
+    url: '/storeList/storeDetail/coDetail/:coId',
+    views: {
+      storeList: {
+        templateUrl: 'templates/store/storeCoDetail.html',
+        controller: 'storeCoDetailCtrl',
       }
     }
   })

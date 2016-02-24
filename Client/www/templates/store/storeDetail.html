@@ -1,5 +1,13 @@
 <ion-view view-title="店铺详情">
+
   <ion-content has-subheader="false">
-    
+    <div class="list">
+        <a class="item item-thumbnail-left" ui-sref="tab.store-co-detail({coId:co._id})" ng-repeat="co in coList">
+          <img ng-src={{co.img}}>
+          <h2>{{co.name}}</h2>
+          <p class="red-w">{{co.price | currency:'￥'}}</p>
+          <p>{{co.description}}</p>
+        </a>
+    </div>
   </ion-content>
 </ion-view>

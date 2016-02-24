@@ -82,9 +82,11 @@ router.get('/api/findCo/:coId', function (req, res, next) {
  * @type {}
  */
 router.get('/api/findCoByStoreId/:storeId', function (req, res, next) {
+  console.log('123123');
   CoModel.find({
     storeId: req.params.storeId
   }, function (err, data) {
+    console.log(data);
     if(err){
       res.sendStatus(404);
     }else{
