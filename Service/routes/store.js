@@ -38,6 +38,17 @@ router.get('/api/storeList', function (req, res, next) {
     res.jsonp(data);
   });
 });
+router.get('/api/findStore/:userId', function (req, res, next) {
+  StoreModel.find({
+    userId: req.params.userId
+  }, function (err, data) {
+    if(err){
+      console.log(err);
+    }else{
+      res.jsonp(data[0]);
+    }
+  });
+});
 router.get('/', function (req, res, next) {
   res.send('hey,店铺相关接口');
 });

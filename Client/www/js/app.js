@@ -19,6 +19,7 @@ angular.module('starter', [
   'commodityCtrl',
   'starter.fleaService',
   'starter.commonService',
+  'starter.coService',
   'starter.userService'])
 
 .run(function($ionicPlatform) {
@@ -49,7 +50,8 @@ angular.module('starter', [
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller:'indexCtrl',
   })
 
   // Each tab has its own nav history stack:
@@ -64,6 +66,16 @@ angular.module('starter', [
       }
     }
   })
+  // 购物车
+  .state('tab.shopCart', {
+    url: '/userCenter/shopCart',
+    views: {
+      userCenter: {
+        templateUrl: 'templates/userCenter/shopCart.html',
+        controller: 'shopCartCtrl'
+      }
+    }
+  })
   // 发布二手物品
   .state('tab.postFlae', {
     url:'/userCenter/postFlea',
@@ -71,6 +83,16 @@ angular.module('starter', [
       'userCenter': {
         templateUrl: 'templates/userCenter/postFlea.html',
         controller: 'postFleaCtrl'
+      }
+    }
+  })
+  // 发布商品
+  .state('tab.postCo', {
+    url:'/userCenter/postCo',
+    views: {
+      'userCenter': {
+        templateUrl: 'templates/userCenter/postCo.html',
+        controller: 'postCoCtrl',
       }
     }
   })
@@ -98,7 +120,16 @@ angular.module('starter', [
     views: {
       'commodityList': {
         templateUrl: 'templates/commodity/commodityList.html',
-
+        controller: 'commdityListCtrl'
+      }
+    }
+  })
+  .state('tab.coDetail', {
+    url: '/commodityList/coDetail/:coId',
+    views:{
+      'commodityList': {
+        templateUrl: 'templates/commodity/coDetail.html',
+        controller: 'coDetailCtrl'
       }
     }
   })
@@ -121,12 +152,22 @@ angular.module('starter', [
       }
     }
   })
+  // 店铺列表
   .state('tab.store', {
     url: '/storeList',
     views: {
       'storeList':{
         templateUrl: 'templates/store/storeList.html',
         controller: 'storeListCtrl'
+      }
+    }
+  })
+  // 商品电脑
+  .state('tab.store-detail', {
+    url: '/storeList/storeDetail/:storeId',
+    views: {
+      storeList: {
+        templateUrl: 'templates/store/storeDetail.html',
       }
     }
   })

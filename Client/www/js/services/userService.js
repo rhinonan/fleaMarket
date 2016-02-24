@@ -125,6 +125,15 @@ angular.module('starter.userService', [])
         isArray: true,
       }
     }),
-
+    'findStoreByUserId': $resource(configuration.apiUrl+'store/api/findStore/:userId', {
+      'userId': '@userId'
+    }, {
+      get: {
+        method: 'JSONP',
+        params: {
+          callback: 'JSON_CALLBACK',
+        }
+      }
+    })
   };
 });

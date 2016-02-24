@@ -14,9 +14,7 @@ angular.module('userCenterCtrl',[])
 /**
  * 发布二手物品控制器
  */
-.controller('postFleaCtrl',function($scope, commonService, bankSession, $timeout, fleaService){
-
-
+.controller('postFleaCtrl',function ($scope, commonService, bankSession, $timeout, fleaService){
 
   $scope.flea = {};
   $scope.flea.imgs = [''];
@@ -44,5 +42,46 @@ angular.module('userCenterCtrl',[])
     }, function (err) {
     });
   };
-
+})
+/**
+ * 购物车控制器
+ * @return {[type]}     [description]
+ */
+.controller('shopCartCtrl',function ($scope,shopCart){
+  var sum = 0;
+  $scope.amout = 0;
+  $scope.$on('shopCartChange', function () {
+    $scope.coList = shopCart.AllCo();
+    // 如果商品不为空
+    if($scope.coList.length !== 0){
+      $scope.sum();
+    }
+  });
+  // 商品数量减一
+  $scope.minus = function (id) {
+    if($scope.coList[id].length > 1){
+      $scope.coList[id].length --;
+    }else{
+      return false;
+    }
+    $scope.sum();
+  };
+  // 商品数量加一
+  $scope.plus = function (id) {
+    if($scope.coList[id].length < $scope.coList[id][0].stock){
+      $scope.coList[id].push($scope.coList[id][0]);
+    }else{
+      // 库存不足
+      return false;
+    }
+    $scope.sum();
+  };
+  // 计算总金额
+  $scope.sum = function () {
+    sum = 0;
+    for(var key in $scope.coList){
+      sum = sum + $scope.coList[key][0].price * $scope.coList[key].length;
+    }
+    $scope.amout = sum;
+  };
 });

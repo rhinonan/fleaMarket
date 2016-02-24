@@ -1,0 +1,41 @@
+<ion-view view-title="发布商品">
+  <ion-content has-subheader="false" padding="false">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">物品名称</span>
+        <input type="text" placeholder="物品名称" ng-model="co.name">
+      </label>
+      <label class="item item-input ">
+        <span class="input-label">价格</span>
+        <input type="number" placeholder="价格" ng-model="co.price">
+      </label>
+      <label class="item item-input ">
+        <span class="input-label">库存</span>
+        <input type="number" placeholder="价格" ng-model="co.stock">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">描述</span>
+        <input type="text" placeholder="描述" ng-model="co.description">
+      </label>
+      <label class="item item-select">
+        <div class="input-label">
+          所在高校
+        </div>
+        <select ng-model="co.schoolId">
+          <option selected>请选择</option>
+          <option value="{{o._id}}" ng-repeat="o in schoolList">{{o.schoolname}}</option>
+        </select>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">图片地址</span>
+        <input type="text" placeholder="图片地址" ng-model="co.img">
+      </label>   
+    </div>
+    <div class="col">
+      <button class="button button-block" ng-click="postCo()">
+        提交商品
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

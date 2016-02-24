@@ -1,0 +1,32 @@
+<ion-view view-title="购物车">
+  <ion-content has-subheader="false">
+    <div class="list">
+      <div class="item item-divider">
+        小计
+      </div>
+      <div class="item">
+        ops,购物车是空的
+      </div>
+      <div class="item" ng-repeat="co in coList">
+        {{co[0].name}} <span class="red-w">{{co[0].price | currency:'￥'}}</span>
+        <div style="float:right">
+          <button class="ion-ios-minus-empty" ng-click="minus(co[0]._id)"></button>
+          &ensp;{{co.length}}&ensp;
+          <button class="ion-ios-plus-empty" ng-click="plus(co[0]._id)"></button></div>
+      </div>
+      <div class="item item-divider">
+         合计
+      </div>
+      <div class="item">
+        <div style="float:right">
+          总计：<span class="red-w">{{amout | currency:'￥'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="button button-assertive button-full">
+        结算
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

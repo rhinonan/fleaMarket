@@ -31,15 +31,33 @@ var FleaSchema = new mongoose.Schema({
 var StoreSchema = new mongoose.Schema({
   name: String,
   schoolId: String,
+  username: String,
   description: String,
   userId: String,
+  img: String,
+});
+
+var CoSchema = new mongoose.Schema({
+  name: String,
+  schoolId: String,
+  description: String,
+  storeId: String,
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  stock: Number,
+  price: Number,
   img: String,
 });
 var SchoolSchema = new mongoose.Schema({
   schoolname: String,
 });
-// mongoose.model('Book',BookSchema);
+
+
+
 mongoose.model('User',UserSchema);
 mongoose.model('School', SchoolSchema);
 mongoose.model('Flea', FleaSchema);
 mongoose.model('Store', StoreSchema);
+mongoose.model('Co',CoSchema);

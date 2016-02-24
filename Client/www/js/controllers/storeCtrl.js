@@ -38,10 +38,14 @@ angular.module('StoreCtrl',[])
   };
 })
 
-.controller('storeListCtrl', function ($scope, storeService) {
+.controller('storeListCtrl', function ($scope,$timeout,$ionicTabsDelegate, storeService) {
   storeService.storeList.get({}).$promise
   .then(function (data) {
     $scope.storeList = data;
     // console.log(data);
   });
+  // $timeout(function () {
+  //   console.log(1213123);
+  //   $ionicTabsDelegate.showBar(false);
+  // }, 1);
 });

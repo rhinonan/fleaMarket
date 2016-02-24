@@ -15,11 +15,13 @@ angular.module('fleaCtrl', [])
 
 //二手物品详情控制器
 .controller('fleaDetailCtrl', function($scope,$stateParams, $ionicSlideBoxDelegate,$timeout,fleaService, userService, commonService){
-  console.log($stateParams.fleaId);
+
   fleaService.getDetail.get({
     'fleaId': $stateParams.fleaId,
   },function (data) {
     $scope.fleaDetail = data;
+    $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
+
     //获取个人信息
     userService.findUser.findUser({
       userId: data.userId

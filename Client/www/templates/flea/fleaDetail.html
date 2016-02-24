@@ -1,10 +1,23 @@
 <ion-view view-title="物品详情">
 <ion-content has-subheader="false">
-  <ion-slide-box class="slide-box" on-slide-changed="slideHasChanged($index)" does-continue="true">
+<div class="slide-box">
+  <ion-slide-box  on-slide-changed="slideHasChanged($index)" does-continue="true">
     <ion-slide ng-repeat="img in fleaDetail.imgs track by $index">
       <div class="flea-imgs" ><img ng-src="{{img}}" alt="二手物品图片"></div>
     </ion-slide>
   </ion-slide-box>
+<!--   <ion-slide-box on-slide-changed="slideHasChanged($index)">
+    <ion-slide style="height:200px">
+      <div style="b"><h1>BLUE</h1></div>
+    </ion-slide>
+    <ion-slide>
+      <div class="box yellow"><h1>YELLOW</h1></div>
+    </ion-slide>
+    <ion-slide>
+      <div class="box pink"><h1>PINK</h1></div>
+    </ion-slide>
+  </ion-slide-box> -->
+</div>
   <div class="row">
     <div class="col"><h3 class="flea-name">{{fleaDetail.name}}</h3></div>
     <div class="col"><span class="red-w middle-w">{{fleaDetail.price | currency:'￥' }}</span></div>

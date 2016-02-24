@@ -1,11 +1,11 @@
 <ion-view view-title="商品列表">
   <ion-content has-subheader="false">
   <div class="list">
-      <a class="item item-thumbnail-left" href="#">
-        <img src="cover.jpg">
-        <h2>Pretty Hate Machine</h2>
-        <p class="red-w">123123</p>
-        <p>Nine Inch Nails</p>
+      <a class="item item-thumbnail-left" ui-sref="tab.coDetail({coId:co._id})" ng-repeat="co in coList">
+        <img ng-src={{co.img}}>
+        <h2>{{co.name}}</h2>
+        <p class="red-w">{{co.price | currency:'￥'}}</p>
+        <p>{{co.description}}</p>
       </a>
   </div>
   </ion-content>

@@ -1,0 +1,50 @@
+<ion-view view-title="商品详情">
+  <ion-content has-subheader="false">
+    <div class="slide-box" >
+      <ion-slide-box on-slide-changed="slideHasChanged()">
+        <ion-slide>
+          <div class="flea-imgs" ><img ng-src="{{co.img}}" alt="商品图片"></div>
+        </ion-slide>
+        <ion-slide>
+          <div class="flea-imgs" ><img ng-src="{{co.img}}" alt="商品图片"></div>
+        </ion-slide>
+        <ion-slide>
+          <div class="flea-imgs" ><img ng-src="{{co.img}}" alt="商品图片"></div>
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+    <div class="row">
+      <div class="col"><h3>{{co.name}}</h3></div>
+    </div>
+    <div class="row">
+      <div class="col"><span class="red-w">{{co.price | currency:'￥'}}</span></div>
+      <div class="col" ng-if="co.stock !== 0"><span>库存： {{co.stock}}</span></div>
+      <div class="col" ng-if="co.stock === 0"><span>库存： {{co.stock}}</span></div>
+    </div>
+    <div class="row">
+      <div class="col">上架时间：{{co.date | date : format : 'yyyy-MMMM-dd' }}</div>
+    </div>
+    <div class="row">
+      <div class="col"  ng-if="co.description">{{co.description}}</div>
+      <div class="col" ng-if="!co.description">该商品没有详细介绍信息 </div>
+    </div>
+    <div class="row">
+      <div class="col">商品包送货学校：{{co.schoolName}}</div>
+    </div>
+    <div class="bar bar-footer">
+      <div class="footer-box">
+        <button class="button button-full button-energized" ng-if="co.stock > 0" ng-click="addToShopCart()">
+          加入购物车
+        </button>          
+        <button class="button button-full button-stable" ng-if="co.stock == 0">
+          库存不足
+        </button>        
+        <button class="button button-full button-assertive" >
+          直接购买
+        </button>
+      </div>
+
+    </div>
+  </ion-content>
+
+</ion-view>

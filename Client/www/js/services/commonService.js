@@ -21,4 +21,20 @@ angular.module('starter.commonService', [])
       }
     })
   };
+})
+// 购物车
+.factory('shopCart', function (){
+  var shopCart = {};
+  var resolve = {};
+  resolve.addCo = function (co) {
+    if(!shopCart[co._id]){
+      shopCart[co._id] = [];
+    }
+    shopCart[co._id].push(co);
+    console.log(shopCart);
+  };
+  resolve.AllCo = function () {
+    return shopCart;
+  };
+  return resolve;
 });
