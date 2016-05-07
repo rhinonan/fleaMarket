@@ -100,7 +100,21 @@ angular.module('starter.userService', [])
     }
   };
 })
-
+/**
+ * 根据id查找用户
+ */
+.factory('findUser', function($resource, configuration){
+  return {
+    findUser: $resource(configuration.apiUrl+'users/findUser', {}, {
+      get: {
+        method: 'JSONP',
+        params: {
+          callback: 'JSON_CALLBACK',
+        }
+      }
+    })
+  };
+})
 /**
  * 店铺相关接口
  * @return {[type]}     [description]

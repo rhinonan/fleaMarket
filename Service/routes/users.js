@@ -5,25 +5,6 @@ require('../dbConfig.js');
 
 var UserModel = mongoose.model('User');
 
-var foo = {
-	'name': 'husan',
-	'age': '21',
-	'gender': 'men',
-};
-
-var userInfo = {
-  'userId' : '1234567',
-  'userName': 'hsuan',
-};
-
-var errInfo = {
-  msg : '用户名或者密码错误',
-};
-
-router.get('/', function (req, res, next) {
-  res.send('123')
-});
-
 // 用户登录
 router.get('/login', function(req, res, next) {
   if(req.query.username === undefined){

@@ -42,10 +42,15 @@ angular.module('StoreCtrl',[])
  * 店铺列表控制器
  * @return {[type]}                    [description]
  */
-.controller('storeListCtrl', function ($scope,$timeout,$ionicTabsDelegate, storeService) {
+.controller('storeListCtrl', function ($scope,$timeout,$ionicTabsDelegate, storeService, userService, bankSession) {
   storeService.storeList.get({}).$promise
   .then(function (data) {
     $scope.storeList = data;
+  });
+  userService.findUser.findUser({
+    userId : bankSession.getUserId()
+  }, function (data) {
+    $scope.userinfo = data;
   });
 })
 /**
@@ -57,7 +62,6 @@ angular.module('StoreCtrl',[])
   }).$promise
   .then(function (data) {
     $scope.coList = data;
-    console.log(data);
   });
 })
 .controller('storeCoDetailCtrl',function ($scope, $ionicTabsDelegate, $timeout, coService, $stateParams, shopCart, $ionicSlideBoxDelegate){

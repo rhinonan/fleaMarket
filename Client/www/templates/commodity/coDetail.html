@@ -40,7 +40,7 @@
         <button class="button button-full button-stable" ng-if="co.stock == 0">
           库存不足
         </button>        
-        <button class="button button-full button-assertive" >
+        <button class="button button-full button-assertive" ng-if="co.stock > 0">
           直接购买
         </button>
       </div>

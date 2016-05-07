@@ -2,12 +2,23 @@ angular.module('userCenterCtrl',[])
 /**
  * 用户个人中心控制器
  */
-.controller('userCenterCtrl',function($scope, $state){
+.controller('userCenterCtrl',function($scope, $state, configuration, userService, bankSession){
+  $scope.userinfo = {};
+  userService.findUser.findUser({
+    userId : bankSession.getUserId()
+  }, function (data) {
+    $scope.userinfo = data;
+    $scope.userinfo.avatars = configuration.apiUrl+'avatars/default.png';
+  });
   $scope.postFlea = function () {
     $state.go('tab.postFlae',{});
   };
+
   $scope.postStore = function () {
     $state.go('tab.postStoreF', {});
+  };
+  $scope.shopCart = function () {
+    $state.go('tab.shopCart', {});
   };
 })
 
@@ -52,6 +63,7 @@ angular.module('userCenterCtrl',[])
   $scope.amout = 0;
   $scope.$on('shopCartChange', function () {
     $scope.coList = shopCart.AllCo();
+    console.log($scope.coList);
     // 如果商品不为空
     if($scope.coList.length !== 0){
       $scope.sum();

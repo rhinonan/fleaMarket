@@ -2,16 +2,42 @@
 <ion-view view-title="个人中心">
   <ion-content has-subheader="false">
     <div class="row">
+      <div class="list card">
+        <div class="item item-avatar">
+          <img ng-src="{{userinfo.avatars}}">
+          <h2>{{userinfo.username}}</h2>
+          <p> 注册时间：{{userinfo.data | date : 'yyyy-MM-dd' }}</p>
+        </div>
+
+        <div class="item item-body">
+          <img class="full-image" >
+          <p>
+            <span class="row">
+              <span class="col">电话：{{userinfo.tel}}</span>
+              <span class="col">邮箱：{{userinfo.email}}</span>
+            </span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
       <div class="col">       
         <button class="button button-positive button-full" ng-click="postFlea()">
            <!-- button-light -->
-           发布二手物品
+           发布二手
         </button>
       </div>
       <div class="col">
         <button class="button button-positive button-full" ng-click="postStore()">
            <!-- button-light -->
            开启店铺
+        </button>
+      </div>      
+      <div class="col">
+        <button class="button button-positive button-full" ng-click="shopCart()">
+           <!-- button-light -->
+           购物车
         </button>
       </div>
     </div>

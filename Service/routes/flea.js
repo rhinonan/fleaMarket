@@ -13,10 +13,14 @@ var fleaCache;
 
 /* GET home page. */
 router.get('/list', function(req, res, next) {
-  // 判断是否需要更新缓存
-  cache();
-  //返回缓存
-  res.jsonp(fleaCache);
+  FleaModel.find({}, function (err, data) {
+    if(err){
+      cacheStatus = false;
+    }else{
+      fleaCache = data;
+      res.jsonp(data);
+    }
+  });
 });
 
 // 发布二手物品
@@ -64,24 +68,23 @@ router.get('/detail/:fleaId', function (req, res, next) {
 
 // 缓存处理行数
 function cache () {
-  if(cache === 0){
-    if(cacheTimer){
-      clearTimeout(cacheTimer);
-    }
-    cacheTimer = setTimeout(function () {
-      trigger = 5;
-    });
-  }else{
+  // console.log();
+  // if(cache === 0){
+  //   if(cacheTimer){
+  //     clearTimeout(cacheTimer);
+  //   }
+  //   cacheTimer = setTimeout(function () {
+  //     trigger = 5;
+  //   });
+  // }else{
     FleaModel.find({}, function (err, data) {
       if(err){
-        console.log(err);
         cacheStatus = false;
       }else{
         fleaCache = data;
-        // console.log(data);
       }
     });
-  }
+  // }
 }
 
 
