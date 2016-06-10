@@ -97,7 +97,14 @@ angular.module('starter.userService', [])
     },
     clear: function () {
       return $window.sessionStorage.clear();
-    }
+    },
+    isLogin: function () {
+      if($window.sessionStorage.getItem('userId')){
+        return true;
+      }else{
+        return false;
+      }
+    },
   };
 })
 /**

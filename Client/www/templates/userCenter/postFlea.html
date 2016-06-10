@@ -35,13 +35,12 @@
           <option value="{{o._id}}" ng-repeat="o in schoolList">{{o.schoolname}}</option>
         </select>
       </label>
-    </div>
-    <div class="list">
-      <label class="item item-input" ng-repeat="img in flea.imgs track by $index">
-        <span class="input-label">图片地址</span>
-        <input type="text" placeholder="图片地址" ng-model="flea.imgs[$index]">
-      </label>
-    </div>      
+
+      <div class="item" style="padding: 5px 16px;">
+        <img class="flea-img" ng-src="{{img}}" alt="" ng-repeat="img in imgs">
+        <div ng-repeat="img in flea.imgs">{{img}}</div>
+      </div>
+    </div>   
     <div class="col col-50" style="margin-top:-20px;">
         <button class="button button-positive" ng-click="addPic()" >
           添加图片

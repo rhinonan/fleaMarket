@@ -1,0 +1,64 @@
+extends ../layout
+
+block content
+  //- each co in coList
+  //-   div.modal.fade(id='#{co._id}' tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+  //-     .modal-dialog.modal-sm(role='document')
+  //-       .modal-content
+  //-         form.form-horizontal(action='../../../co/stock' method="POST")
+  //-           .modal-header
+  //-             button.close(type='button', data-dismiss='modal', aria-label='Close')
+  //-               span(aria-hidden='true') ×
+  //-             h4#myModalLabel.modal-title 修改商品库存
+  //-           .modal-body
+  //-             .form-group
+  //-               label.col-sm-4.control-label(for='stock') 商品库存
+  //-               .col-sm-7
+  //-                 input#stock.form-control(type='text', placeholder='数量' ,name='stock' required)
+  //-                 input(style='display:none' name="coId" value="#{co._id}")
+  //-           .modal-footer
+  //-             button.btn.btn-default(type='button', data-dismiss='modal') 取消
+  //-             button.btn.btn-primary(type='submit') 确认修改
+
+  .row
+    .col-lg-12
+      h1.page-header
+        | 店铺管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') fleaMarket 管理系统
+        li.active
+          i.fa.fa-table
+          |  店铺列表
+  .row
+    .col-lg-12
+      .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/store/add") 新增店铺
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped(style="table-layout：fixed")
+            thead
+              tr
+                th 店铺名称
+                th 店铺开启人
+                th 店铺描述
+                th 店铺状态
+                th 操作
+            tbody
+              each store in storeList
+                tr
+                  td=store.name
+                  td(width="100")=store.username
+                  td.longtext-td=store.description
+                  td=store.status
+                  td(width="165")
+                    - if(store.status == '未审核'){
+                      a.btn.btn-primary.btn-xs(onclick="passStore('#{store._id}')") 通过审核
+                      span &emsp;
+                      a.btn.btn-danger.btn-xs(onclick="nopassStore('#{store._id}')") 审核不通过
+                    - }else{
+                      a.btn.btn-danger.btn-xs(onclick="closeStore('#{store._id}')") 关闭店铺
+                    - }

@@ -14,10 +14,12 @@ var fleaCache;
 /* GET home page. */
 router.get('/list', function(req, res, next) {
   FleaModel.find({}, function (err, data) {
+    console.log(err);
     if(err){
       cacheStatus = false;
     }else{
       fleaCache = data;
+      console.log(data);
       res.jsonp(data);
     }
   });
@@ -25,27 +27,26 @@ router.get('/list', function(req, res, next) {
 
 // 发布二手物品
 router.get('/postFlea', function (req, res, next) {
-  addFlea();
-  function addFlea () {
-    var newFlea = new FleaModel({
-      name: req.query.name,
-      price: req.query.price,
-      schoolId: req.query.schoolId,
-      description: req.query.description,
-      newnessRate: req.query.newnessRate,
-      userId: req.query.userId,
-      imgs: req.query.imgs.length === 0 ? 'http://ww4.sinaimg.cn/bmiddle/71f0dc27gw1f0lcha448rj20v50v575j.jpg' : req.query.imgs,
-    });
-    // 存贮新发布的物品
-    newFlea.save(function (err) {
-      if(err){
-        console.log(err);
-        res.status(404);
-      }else{
-        res.jsonp('err');
-      }
-    });
-  }
+  console.log(req.query);
+  var newFlea = new FleaModel({
+    name: req.query.name,
+    price: req.query.price,
+    schoolId: req.query.schoolId,
+    description: req.query.description,
+    newnessRate: req.query.newnessRate,
+    userId: req.query.userId,
+    imgs: req.query.imgs.length === 0 ? 'http://ww4.sinaimg.cn/bmiddle/71f0dc27gw1f0lcha448rj20v50v575j.jpg' : req.query.imgs,
+  });
+  // 存贮新发布的物品
+  newFlea.save(function (err) {
+    if(err){
+      console.log(err);
+      res.status(404);
+    }else{
+      res.jsonp('err');
+    }
+  });
+
 });
 
 

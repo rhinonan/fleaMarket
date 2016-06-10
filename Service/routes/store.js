@@ -11,8 +11,7 @@ StoreModel.find({},function (err, data) {
 } );
 
 // 开启一个网店
-router.get('/api/postStore', function (req, res, next) {
-  console.log(req.query);
+router.get('/postStore', function (req, res, next) {
   var newStore = new StoreModel({
     name:req.query.name,
     schoolId: req.query.schoolId,
@@ -29,8 +28,10 @@ router.get('/api/postStore', function (req, res, next) {
   });
 });
 
-router.get('/api/storeList', function (req, res, next) {
+router.get('/storeList', function (req, res, next) {
+  console.log(11111111111);
   StoreModel.find({}, function (err, data) {
+    console.log(data);
     if (err) {
       console.log(err);
       res.sendState(404);
@@ -38,7 +39,7 @@ router.get('/api/storeList', function (req, res, next) {
     res.jsonp(data);
   });
 });
-router.get('/api/findStore/:userId', function (req, res, next) {
+router.get('/findStore/:userId', function (req, res, next) {
   StoreModel.find({
     userId: req.params.userId
   }, function (err, data) {

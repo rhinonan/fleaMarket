@@ -4,6 +4,8 @@ angular.module('userCenterCtrl',[])
  */
 .controller('userCenterCtrl',function($scope, $state, configuration, userService, bankSession){
   $scope.userinfo = {};
+  // $scope.loginState = true;
+  $scope.loginState = bankSession.isLogin();
   userService.findUser.findUser({
     userId : bankSession.getUserId()
   }, function (data) {
@@ -13,7 +15,9 @@ angular.module('userCenterCtrl',[])
   $scope.postFlea = function () {
     $state.go('tab.postFlae',{});
   };
-
+  $scope.goLogin = function() {
+    $state.go('login',{});
+  };
   $scope.postStore = function () {
     $state.go('tab.postStoreF', {});
   };
@@ -25,10 +29,10 @@ angular.module('userCenterCtrl',[])
 /**
  * 发布二手物品控制器
  */
-.controller('postFleaCtrl',function ($scope, commonService, bankSession, $timeout, fleaService){
+.controller('postFleaCtrl',function ($scope, configuration, commonService, bankSession, $ionicPopup,$timeout, fleaService, $cordovaImagePicker){
 
   $scope.flea = {};
-  $scope.flea.imgs = [''];
+  $scope.flea.imgs = [];
   /**
    * 获取学校列表
    * @param  {} 
@@ -37,10 +41,34 @@ angular.module('userCenterCtrl',[])
   commonService.getSchool.get({}, function (data) {
     $scope.schoolList = data;
   });
+  function uploadImg(img) {
 
-  // 添加一张图片
+    var ft = new FileTransfer();
+    ft.upload(img, configuration.apiUrl+'api/image', function(info) {
+        var rs = JSON.parse(info.response);
+        $scope.flea.imgs.push(rs.data.imgSrc);
+      }, function(error) {
+          // $ionicLoading.hide();
+      }, {});
+  }
   $scope.addPic = function () {
-    $scope.flea.imgs.push('');
+
+    var options = {
+      maximumImagesCount: 3,
+      width: 320,
+      height: 100,
+      quality: 80
+    };
+    $cordovaImagePicker.getPictures(options)
+      .then(function (results) {
+        $scope.imgs = results;
+        var ft = new FileTransfer();
+        for (var i = results.length - 1; i >= 0; i--) {
+          uploadImg(results[i]);
+        }
+        
+      }, function (error) {
+      });
   };
 
   // 发布二手物品

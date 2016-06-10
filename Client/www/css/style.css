@@ -1,1 +1,6 @@
 /* Empty. Add your own CSS if you like */
+.flea-img{
+  width: 90px;
+  height: 90px;
+  border: 1px solid #ececec
+}

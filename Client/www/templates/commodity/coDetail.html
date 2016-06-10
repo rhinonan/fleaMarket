@@ -2,15 +2,9 @@
 
   <ion-content has-subheader="false">
     <div class="slide-box" >
-      <ion-slide-box on-slide-changed="slideHasChanged()">
-        <ion-slide>
-          <div class="flea-imgs" ><img ng-src="{{co.img}}" alt="商品图片"></div>
-        </ion-slide>
-        <ion-slide>
-          <div class="flea-imgs" ><img ng-src="{{co.img}}" alt="商品图片"></div>
-        </ion-slide>
-        <ion-slide>
-          <div class="flea-imgs" ><img ng-src="{{co.img}}" alt="商品图片"></div>
+      <ion-slide-box delegate-handle="coImg-viewer">
+        <ion-slide ng-repeat="img in co.img track by $index">
+          <div class="flea-imgs" ><img ng-src="{{img}}" alt="商品图片"></div>
         </ion-slide>
       </ion-slide-box>
     </div>

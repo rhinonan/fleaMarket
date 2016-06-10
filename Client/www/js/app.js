@@ -7,6 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic',
+  'ngCordova',
   'ngResource', 
   'starter.controllers', 
   'starter.services',
@@ -59,6 +60,7 @@ angular.module('starter', [
   // 用户个人中心
   .state('tab.user', {
     url:'/userCenter',
+    cache: false, 
     views: {
       'userCenter':{
         templateUrl: 'templates/userCenter/userCenter.html',

@@ -1,8 +1,21 @@
 <!-- 个人中心页面 -->
 <ion-view view-title="个人中心">
   <ion-content has-subheader="false">
-    <div class="row">
-      <div class="list card">
+  <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+
+    <div class="item login-tips" href="#"  ng-if="!loginState" ng-click="goLogin()">
+      <div style="float:left;height:31px; line-height:31px;">
+        Sorry, 您还没有登录！
+      </div>
+      <div style="float:right">
+        <div class="button button-small button-assertive">
+          登录/注册
+        </div >
+      </div>
+    </div>
+    
+    <div class="row" ng-if="loginState" >
+      <div class="list card" style="margin-bottom:5px;">
         <div class="item item-avatar">
           <img ng-src="{{userinfo.avatars}}">
           <h2>{{userinfo.username}}</h2>
@@ -21,25 +34,32 @@
 
       </div>
     </div>
-    <div class="row">
-      <div class="col">       
-        <button class="button button-positive button-full" ng-click="postFlea()">
-           <!-- button-light -->
-           发布二手
-        </button>
+    <div class="list my-content" ng-if="loginState">
+      <div class="item item-divider">
+        我的内容
       </div>
-      <div class="col">
-        <button class="button button-positive button-full" ng-click="postStore()">
-           <!-- button-light -->
-           开启店铺
-        </button>
-      </div>      
-      <div class="col">
-        <button class="button button-positive button-full" ng-click="shopCart()">
-           <!-- button-light -->
-           购物车
-        </button>
-      </div>
+      <a class="item item-icon-left" 
+      ng-click="postFlea()">
+        <i class="icon ion-ios-paperplane-outline"></i>
+        发布二手物品
+      </a>
+      <a class="item item-icon-left"
+      ng-click="postStore()">
+        <i class="icon ion-ios-chatbubble-outline"></i>
+        开启店铺
+      </a>
+      <a class="item item-icon-left"
+      ng-click="shopCart()">
+        <i class="icon ion-ios-calendar-outline"></i>
+        购物车
+      </a>
+      <!-- <a class="item  " href="#"> -->
+        <span class="button button-full button-assertive" 
+        ng-click="logoOut()"
+        ng-if="loginState">
+          退出登录
+        </span>
+      <!-- </a> -->
     </div>
   </ion-content>
 </ion-view>

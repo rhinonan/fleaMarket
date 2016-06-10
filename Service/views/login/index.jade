@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 用户登录
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') fleaMarket
+        li.active
+          i.fa.fa-table
+          |  用户登录
+  .row
+    .col-md-12
+      form.form-horizontal(action="../../../../login" method="POST")
+        .form-group
+          label.col-sm-2.control-label(for='name') 用户名
+          .col-sm-4
+            input#name.form-control(type='text',name="name", placeholder='用户名')
+        .form-group
+          label.col-sm-2.control-label(for='password') 密码
+          .col-sm-4
+            input#password.form-control(type='password',name="password", placeholder='密码')
+        
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-default(type='submit') 提交
+

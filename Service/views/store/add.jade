@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 店铺管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') ESPT 管理系统
+        li.active
+          i.fa.fa-table
+          |  新增店铺
+  .row
+    .col-md-12
+      form.form-horizontal(action="../../store/add" method="POST" enctype='multipart/form-data')
+        .form-group
+          label.col-sm-2.control-label(for='name') 店铺名称
+          .col-sm-4
+            input#name.form-control(type='text',name="name", placeholder='店铺名称')
+        .form-group
+          label.col-sm-2.control-label(for='content') 店铺描述
+          .col-sm-4
+            textarea#description.form-control(type='text',name="description",placeholder='店铺描述',rows="10")
+        .form-group
+          label.col-sm-2.control-label(for='userId') 发布的用户
+          .col-sm-4
+            select#userId.form-control(name="userId")
+              each user in users
+                option(value="#{user._id}") #{user.username}
+        
+        .form-group
+          label.col-sm-2.control-label(for="imgs") 店铺封面
+          .col-sm-4
+            input#img(type="file", name="img")
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-default(type='submit') 提交
+

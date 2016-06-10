@@ -16,14 +16,16 @@ angular.module('commodityCtrl', [])
     });
 })
 // 商品详情控制器
-.controller('coDetailCtrl',function ($scope, $ionicTabsDelegate, $timeout, coService, $stateParams, shopCart, $ionicSlideBoxDelegate){
+.controller('coDetailCtrl',function ($scope,$timeout, $ionicTabsDelegate, $timeout, coService, $stateParams, shopCart, $ionicSlideBoxDelegate){
   // 获取商品详情
   coService.findCoByCoId.get({
     coId: $stateParams.coId
   }, function (data) {
     $scope.co = data;
-
-    $ionicSlideBoxDelegate.$getByHandle('coImg-viewer').update();
+    $timeout(function() {
+      $ionicSlideBoxDelegate.$getByHandle('coImg-viewer').update();
+      console.log(1111111111);
+    }, 1000);
   });
   $scope.addToShopCart = function () {
     if($scope.co.stock === 0){

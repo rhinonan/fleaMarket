@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 学校管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') fleaMarket 管理系统
+        li.active
+          i.fa.fa-table
+            |  学校列表
+  .row
+    .col-lg-12
+      .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/school/add") 新增学校
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped(style="table-layout：fixed")
+            thead
+              tr
+                th 学校名称
+                th 创建时间
+                th 操作
+            tbody
+              each school in schoolList
+                tr
+                  td=school.schoolname
+                  td=school.date
+                  td(width="126")
+                    span &emsp;
+                    a.btn.btn-danger.btn-xs(onclick="deleteSchool('#{school._id}')") 删除

@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 商品管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') fleaMarket 管理系统
+        li.active
+          i.fa.fa-table
+          |  新增商品
+  .row
+    .col-md-12
+      form.form-horizontal(action="../../co/add" method="POST",enctype='multipart/form-data')
+        .form-group
+          label.col-sm-2.control-label(for='name') 商品名称
+          .col-sm-4
+            input#name.form-control(type='text',name="name", placeholder='商品名称')
+        .form-group
+          label.col-sm-2.control-label(for='price') 商品价格
+          .col-sm-1
+            input#price.form-control(type='number',name="price",placeholder='价格')
+        .form-group
+          label.col-sm-2.control-label(for='stock') 商品库存
+          .col-sm-1
+            input#stock.form-control(type='number',name="stock",placeholder='库存')
+        .form-group
+          label.col-sm-2.control-label(for='description') 商品详细描述
+          .col-sm-4
+            textarea#description.form-control(type='text',name="description",placeholder='商品详细描述',rows="10")
+        .form-group
+          label.col-sm-2.control-label(for='storeId') 店铺
+          .col-sm-4
+            select#storeId.form-control(name="storeId")
+              each store in storeList
+                option(value="#{store._id}") #{store.name}
+        .form-group
+          label.col-sm-2.control-label(for="imgs") 商品图片
+          .col-sm-4
+            input#imgs(type="file", name="imgs",multiple="multiple")
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-default(type='submit') 提交
+

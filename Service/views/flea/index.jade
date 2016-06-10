@@ -1,0 +1,53 @@
+extends ../layout
+block content
+  .row
+    .col-lg-12
+      h1.page-header
+        | 商品管理
+      ol.breadcrumb
+        li
+          i.fa.fa-dashboard
+          span &emsp;
+          a(href='index.html') fleaMarket 管理系统
+        li.active
+          i.fa.fa-table
+            |  商品列表
+  .row
+    .col-lg-12
+      .row
+        .col-md-12.sub-btn
+          a.pull-right.btn.btn-default(href="/flea/add") 新增二手物品
+      .row
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped(style="table-layout：fixed")
+            thead
+              tr
+                th 二手物品名称
+                th 物品价格
+                th 物品描述
+                th 成新率
+                th 所在学校
+                th 发布用户
+                th 操作
+            tbody
+              each flea in fleaList
+                tr
+                  td=flea.name
+                  td=flea.price
+                  td.longtext-td=flea.description
+                  td
+                    case flea.newnessRate
+                      when 10
+                        div 全新
+                      when 9
+                        div 9成新
+                      when 8
+                        div 7-8成新
+                      when 7 
+                        div 5-6成新
+                      default
+                        div 5成新以下
+                  td=flea.schoolname
+                  td=flea.username
+                  td(width="60")
+                    a.btn.btn-danger.btn-xs(style="width:50px;align:center",onclick="deleteFlea('#{flea._id}')") 下架

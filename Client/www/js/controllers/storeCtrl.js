@@ -46,6 +46,7 @@ angular.module('StoreCtrl',[])
   storeService.storeList.get({}).$promise
   .then(function (data) {
     $scope.storeList = data;
+    console.log(data);
   });
   userService.findUser.findUser({
     userId : bankSession.getUserId()
@@ -70,8 +71,7 @@ angular.module('StoreCtrl',[])
     coId: $stateParams.coId
   }, function (data) {
     $scope.co = data;
-
-    $ionicSlideBoxDelegate.$getByHandle('coImg-viewer').update();
+    $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
   });
   $scope.addToShopCart = function () {
     if($scope.co.stock === 0){

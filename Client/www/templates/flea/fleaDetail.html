@@ -1,22 +1,12 @@
 <ion-view view-title="物品详情">
 <ion-content has-subheader="false">
 <div class="slide-box">
-  <ion-slide-box  delegate-handle="image-viewer" on-slide-changed="slideHasChanged($index)" does-continue="true">
+  <ion-slide-box  delegate-handle="image-viewer" does-continue="true">
     <ion-slide ng-repeat="img in fleaDetail.imgs track by $index">
       <div class="flea-imgs" ><img ng-src="{{img}}" alt="二手物品图片"></div>
     </ion-slide>
   </ion-slide-box>
-<!--   <ion-slide-box on-slide-changed="slideHasChanged($index)">
-    <ion-slide style="height:200px">
-      <div style="b"><h1>BLUE</h1></div>
-    </ion-slide>
-    <ion-slide>
-      <div class="box yellow"><h1>YELLOW</h1></div>
-    </ion-slide>
-    <ion-slide>
-      <div class="box pink"><h1>PINK</h1></div>
-    </ion-slide>
-  </ion-slide-box> -->
+
 </div>
   <div class="row">
     <div class="col"><h3 class="flea-name">{{fleaDetail.name}}</h3></div>
@@ -40,7 +30,7 @@
   </div>
   <div class="row">
     <div class="col">姓名：{{userInfo.username}}</div>
-    <div class="col">所在学校：{{schoolName}}</div>
+    <div class="col">所在学校：{{fleaDetail.schoolname}}</div>
   </div>
   <div class="row">
     <div class="col"><span class="ion-ios-telephone"></span>&ensp;:&ensp;{{userInfo.tel}}</div>
